@@ -41,4 +41,4 @@ $ npm test
 
 ## Design decisions
 
-Google's API is called to determine coordinates for each address. I decided to do so asyncronously. This improves performance. The tradeoff is that return order can't be guaranteed. To ensure results are always displayed in the same order, I simply do a sort on the resulting array. If order is more important than performance, this pull request #1 should be merged in.
+Google's API is called to determine coordinates for each address. I decided to do so asyncronously. This improves performance. The tradeoff is that return order can't be guaranteed. To ensure results are always displayed in the same order, I simply do a sort on the resulting array. If order is more important than performance, pull request https://github.com/turntayble81/address-filter/pull/1 should be merged in.
