@@ -2,8 +2,8 @@
 
 const fs              = require('fs');
 const async           = require('async');
-const inputFileParser = require('./lib/inputFileProcessor');
-const checkAddresses  = require('./lib/checkAddresses');
+const inputFileParser = require('./lib/inputFileParser');
+const addressFilter   = require('./lib/addressFilter');
 
 //Get path of input file
 const inputFile = process.argv[2];
@@ -22,13 +22,13 @@ async.waterfall([
     (stat, next) => inputFileParser(inputFile, next),
 
     //Filter addresses to those contained within specified region
-    (inputData, next) => checkAddresses(inputData, next),
+    (inputData, next) => addressFilter.run(inputData, next)
 
-], (err, withinRegionArr=[])=> {
+], (err, filteredAddressesArr=[])=> {
     if(err) {
         return console.error(err);
     }
-    withinRegionArr.forEach((address) => {
+    filteredAddressesArr.forEach((address) => {
         console.log(address);
     });
 });
