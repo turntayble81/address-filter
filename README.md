@@ -7,7 +7,9 @@ This has been verified to run correctly on Ubuntu 18.04LTS with Node.JS 8.11.1. 
 
 1. Clone this repo
 2. Navigate to root directory of cloned repository
-3. Install dependencies:
+3. Copy `config-template.js` to `config.js`
+4. Add your Google API key to `config.js`
+5. Install dependencies:
 ```bash
 $ npm install
 ```
@@ -36,3 +38,7 @@ From root directory of repository, run:
 ```bash
 $ npm test
 ```
+
+## Design decisions
+
+Google's API is called to determine coordinates for each address. I decided to do so asyncronously. This improves performance. The tradeoff is that return order can't be guaranteed. To ensure results are always displayed in the same order, I simply do a sort on the resulting array. If order is more important than performance, this pull request #1 should be merged in.
