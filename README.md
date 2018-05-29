@@ -17,7 +17,7 @@ $ npm install
 ## Running the script
 
 ```bash
-$ ./addressFilter.js inputFile.txt
+$ ./addressFilter.js sampleData.txt
 ```
 
 ## Input file format
